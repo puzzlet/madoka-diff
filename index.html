@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="d3/d3.v2.min.js"></script>
+    <script type="text/javascript" src="sankity.js"></script>
+    <script type='text/javascript'>
+var width = 800, height = 9000;
+var sankity;
+var vis;
+
+$(document).ready(function() {
+  var sankityData = {"nodes": [{"name": "Ep.1", "value": 1450.0}, {"name": "Ep.2", "value": 1450.0}, {"name": "Ep.3", "value": 1450.0}, {"name": "Ep.4", "value": 1450.0}, {"name": "Ep.5", "value": 1450.0}, {"name": "Ep.6", "value": 1450.0}, {"name": "Ep.7", "value": 1450.0}, {"name": "Ep.8", "value": 1450.0}, {"name": "Ep.9", "value": 1450.0}, {"name": "Ep.10", "value": 1450.0}, {"name": "Ep.11", "value": 1450.0}, {"name": "Ep.12", "value": 1450.0}, {"name": "Ep.1", "value": 1540.0}, {"name": "Ep.2", "value": 1540.0}, {"name": "Ep.3", "value": 1450.0}, {"name": "Ep.4", "value": 1450.0}, {"name": "Ep.5", "value": 1450.0}, {"name": "Ep.6", "value": 1450.0}, {"name": "Ep.7", "value": 1450.0}, {"name": "Ep.8", "value": 1450.0}, {"name": "Ep.9", "value": 1540.0}, {"name": "Ep.10", "value": 1450.0}, {"name": "Ep.11", "value": 1450.0}, {"name": "Ep.12", "value": 1440.0}, {"name": "Beginnings", "value": 7800.0}, {"name": "Eternal", "value": 6540.0}], "links": [{"target": 12, "target_offset": 0.0, "source_offset": 0.0, "source": 0, "value": 1450.0, "ref": "line36"}, {"target": 13, "target_offset": 0.0, "source_offset": 0.0, "source": 1, "value": 1450.0, "ref": "line39"}, {"target": 14, "target_offset": 0.0, "source_offset": 0.0, "source": 2, "value": 1450.0, "ref": "line42"}, {"target": 15, "target_offset": 0.0, "source_offset": 0.0, "source": 3, "value": 1450.0, "ref": "line45"}, {"target": 16, "target_offset": 0.0, "source_offset": 0.0, "source": 4, "value": 1450.0, "ref": "line48"}, {"target": 17, "target_offset": 0.0, "source_offset": 0.0, "source": 5, "value": 1450.0, "ref": "line51"}, {"target": 18, "target_offset": 0.0, "source_offset": 0.0, "source": 6, "value": 1450.0, "ref": "line54"}, {"target": 19, "target_offset": 0.0, "source_offset": 0.0, "source": 7, "value": 1450.0, "ref": "line57"}, {"target": 20, "target_offset": 0.0, "source_offset": 0.0, "source": 8, "value": 1450.0, "ref": "line60"}, {"target": 21, "target_offset": 0.0, "source_offset": 0.0, "source": 9, "value": 1450.0, "ref": "line63"}, {"target": 22, "target_offset": 0.0, "source_offset": 0.0, "source": 10, "value": 1450.0, "ref": "line66"}, {"target": 23, "target_offset": 0.0, "source_offset": 0.0, "source": 11, "value": 1450.0, "ref": "line69"}, {"target": 24, "target_offset": 0.0, "source_offset": 0.0, "source": 12, "value": 10.0, "ref": "line73"}, {"target": 24, "target_offset": 10.0, "source_offset": 280.0, "source": 12, "value": 173.0, "ref": "line80"}, {"target": 24, "target_offset": 273.0, "source_offset": 453.0, "source": 12, "value": 375.0, "ref": "line92"}, {"target": 24, "target_offset": 648.0, "source_offset": 878.0, "source": 12, "value": 122.0, "ref": "line104"}, {"target": 24, "target_offset": 770.0, "source_offset": 1026.0, "source": 12, "value": 407.0, "ref": "line111"}, {"target": 24, "target_offset": 1177.0, "source_offset": 170.0, "source": 13, "value": 91.0, "ref": "line121"}, {"target": 24, "target_offset": 1268.0, "source_offset": 315.0, "source": 13, "value": 102.0, "ref": "line128"}, {"target": 24, "target_offset": 1368.0, "source_offset": 676.0, "source": 13, "value": 158.0, "ref": "line134"}, {"target": 24, "target_offset": 1526.0, "source_offset": 871.0, "source": 13, "value": 72.0, "ref": "line141"}, {"target": 24, "target_offset": 1600.0, "source_offset": 984.0, "source": 13, "value": 450.0, "ref": "line149"}, {"target": 24, "target_offset": 2048.0, "source_offset": 0.0, "source": 14, "value": 85.0, "ref": "line157"}, {"target": 24, "target_offset": 2133.0, "source_offset": 378.0, "source": 14, "value": 60.0, "ref": "line160"}, {"target": 24, "target_offset": 2193.0, "source_offset": 526.0, "source": 14, "value": 584.0, "ref": "line163"}, {"target": 24, "target_offset": 2777.0, "source_offset": 1114.0, "source": 14, "value": 230.0, "ref": "line172"}, {"target": 24, "target_offset": 3007.0, "source_offset": 282.0, "source": 15, "value": 120.0, "ref": "line179"}, {"target": 24, "target_offset": 3127.0, "source_offset": 416.0, "source": 15, "value": 604.0, "ref": "line182"}, {"target": 24, "target_offset": 3731.0, "source_offset": 1034.0, "source": 15, "value": 260.0, "ref": "line190"}, {"target": 24, "target_offset": 4295.0, "source_offset": 35.0, "source": 16, "value": 2.0, "ref": "line197"}, {"target": 24, "target_offset": 4325.0, "source_offset": 41.0, "source": 16, "value": 2.0, "ref": "line201"}, {"target": 24, "target_offset": 4355.0, "source_offset": 60.0, "source": 16, "value": 2.0, "ref": "line205"}, {"target": 24, "target_offset": 3991.0, "source_offset": 210.0, "source": 16, "value": 432.0, "ref": "line209"}, {"target": 24, "target_offset": 4423.0, "source_offset": 834.0, "source": 16, "value": 79.0, "ref": "line217"}, {"target": 24, "target_offset": 4502.0, "source_offset": 996.0, "source": 16, "value": 349.0, "ref": "line220"}, {"target": 24, "target_offset": 4851.0, "source_offset": 24.0, "source": 17, "value": 113.0, "ref": "line229"}, {"target": 24, "target_offset": 4964.0, "source_offset": 377.0, "source": 17, "value": 94.0, "ref": "line232"}, {"target": 24, "target_offset": 5058.0, "source_offset": 674.0, "source": 17, "value": 210.0, "ref": "line239"}, {"target": 24, "target_offset": 5268.0, "source_offset": 895.0, "source": 17, "value": 449.0, "ref": "line246"}, {"target": 24, "target_offset": 5857.0, "source_offset": 16.0, "source": 18, "value": 30.0, "ref": "line257"}, {"target": 24, "target_offset": 5887.0, "source_offset": 76.0, "source": 18, "value": 80.0, "ref": "line264"}, {"target": 24, "target_offset": 5717.0, "source_offset": 246.0, "source": 18, "value": 15.0, "ref": "line272"}, {"target": 24, "target_offset": 5843.0, "source_offset": 261.0, "source": 18, "value": 14.0, "ref": "line275"}, {"target": 24, "target_offset": 5732.0, "source_offset": 275.0, "source": 18, "value": 111.0, "ref": "line282"}, {"target": 24, "target_offset": 5967.0, "source_offset": 386.0, "source": 18, "value": 27.0, "ref": "line285"}, {"target": 24, "target_offset": 5994.0, "source_offset": 461.0, "source": 18, "value": 419.0, "ref": "line288"}, {"target": 24, "target_offset": 6413.0, "source_offset": 880.0, "source": 18, "value": 460.0, "ref": "line291"}, {"target": 24, "target_offset": 6873.0, "source_offset": 0.0, "source": 19, "value": 77.0, "ref": "line298"}, {"target": 24, "target_offset": 6950.0, "source_offset": 175.0, "source": 19, "value": 101.0, "ref": "line301"}, {"target": 24, "target_offset": 7051.0, "source_offset": 293.0, "source": 19, "value": 52.0, "ref": "line304"}, {"target": 24, "target_offset": 7103.0, "source_offset": 345.0, "source": 19, "value": 132.0, "ref": "line307"}, {"target": 24, "target_offset": 7235.0, "source_offset": 493.0, "source": 19, "value": 34.0, "ref": "line310"}, {"target": 24, "target_offset": 7269.0, "source_offset": 556.0, "source": 19, "value": 39.0, "ref": "line313"}, {"target": 24, "target_offset": 7308.0, "source_offset": 805.0, "source": 19, "value": 539.0, "ref": "line320"}, {"target": 25, "target_offset": 0.0, "source_offset": 1214.0, "source": 19, "value": 112.0, "ref": "line327"}, {"target": 25, "target_offset": 112.0, "source_offset": 21.0, "source": 20, "value": 96.0, "ref": "line330"}, {"target": 25, "target_offset": 298.0, "source_offset": 207.0, "source": 20, "value": 1228.0, "ref": "line333"}, {"target": 25, "target_offset": 1620.0, "source_offset": 542.0, "source": 12, "value": 42.0, "ref": "line340"}, {"target": 25, "target_offset": 1662.0, "source_offset": 0.0, "source": 21, "value": 312.0, "ref": "line347"}, {"target": 25, "target_offset": 1977.0, "source_offset": 314.0, "source": 21, "value": 364.0, "ref": "line354"}, {"target": 25, "target_offset": 2344.0, "source_offset": 678.0, "source": 21, "value": 228.0, "ref": "line365"}, {"target": 25, "target_offset": 2575.0, "source_offset": 906.0, "source": 21, "value": 223.0, "ref": "line372"}, {"target": 25, "target_offset": 2798.0, "source_offset": 10.0, "source": 12, "value": 48.0, "ref": "line375"}, {"target": 25, "target_offset": 2839.0, "source_offset": 1132.0, "source": 21, "value": 213.0, "ref": "line379"}, {"target": 25, "target_offset": 3052.0, "source_offset": 1346.0, "source": 21, "value": 90.0, "ref": "line387"}, {"target": 25, "target_offset": 3142.0, "source_offset": 0.0, "source": 22, "value": 122.0, "ref": "line395"}, {"target": 25, "target_offset": 3264.0, "source_offset": 212.0, "source": 22, "value": 1200.0, "ref": "line398"}, {"target": 25, "target_offset": 4474.0, "source_offset": 1415.0, "source": 22, "value": 19.0, "ref": "line401"}, {"target": 25, "target_offset": 4493.0, "source_offset": 0.0, "source": 23, "value": 154.0, "ref": "line404"}, {"target": 25, "target_offset": 4647.0, "source_offset": 166.0, "source": 23, "value": 1123.0, "ref": "line407"}, {"target": 25, "target_offset": 5880.0, "source_offset": 1380.0, "source": 23, "value": 60.0, "ref": "line410"}]};
+  vis = d3.select("#kibou")
+    .append("svg")
+    .attr("width", width + 100)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", "translate(50, 0)");
+  vis.append("svg:defs")
+    .append("svg:filter")
+    .attr("id", "blur")
+    .append("svg:feGaussianBlur")
+    .attr("stdDeviation", 1);
+  sankity = d3.sankity()
+    .nodeWidth(15)
+    .nodePadding(10)
+    .size([width, height])
+  sankity.nodes(sankityData.nodes)
+    .links(sankityData.links)
+    .layout(32);
+  vis.append("g")
+    .selectAll(".link")
+    .data(sankityData.links)
+    .enter()
+    .append("g")
+    .attr("class", "link")
+    .call(d3.sankity_link(sankity));
+  vis.selectAll(".node")
+    .data(sankityData.nodes)
+    .enter()
+    .append("g")
+    .attr("class", "node")
+    .attr("transform", function(d) {
+      return "translate(" + d.x + "," + d.y + ")";
+    })
+    .call(d3.sankity_node(sankity));
+
+  vis.selectAll("g.link")
+      .on("mouseover", highlight(1))
+      .on("mouseout", highlight(0))
+      .on("click", select);
+  vis.selectAll("g.link")
+      .append("path")
+      .attr("d", d3.sankity_link().path)
+      .style("stroke-width", 10)
+      .attr("opacity", 0);
+});
+
+
+function highlight(b) {
+  return function(g, i) {
+    d3.select('#kibou')
+      .selectAll("g.link path")
+      .filter(function (d) {
+        return d3.select(this).classed("glow-selected") === false;
+      })
+      .classed("glow", false)
+      .attr("filter", "");
+    if (b) {
+      d3.select('#kibou')
+        .selectAll("g.link path")
+        .filter(function (d) {
+          return d == g;
+        })
+        .classed("glow", true)
+        .attr("filter", "url(#blur)");
+    }
+  };
+}
+
+
+function select(g, i) {
+  unselect();
+  var coord = d3.mouse(this);
+  var div = $('#' + g.ref);
+  var x = (d3.event.pageX - coord[0]) + 
+    ((coord[0] < width / 2) ? width * 0.75 : width * 0.25) - 
+    div.width() / 2;
+  var y = d3.event.pageY;
+  $('#' + g.ref)
+    .css('left', x)
+    .css('top', y)
+    .show();
+  d3.select('#kibou')
+    .selectAll("g.link path")
+    .filter(function (d) {
+      return d == g;
+    })
+    .classed("glow", true)
+    .classed("glow-selected", true)
+    .attr("filter", "url(#blur)");
+}
+
+
+function unselect() {
+  $('div.popup').hide();
+  d3.select('#kibou')
+    .selectAll("g.link path")
+    .classed("glow", false)
+    .classed("glow-selected", false)
+    .attr("filter", "");
+}
+
+
+function relayout() {
+  var offset = $('#kibou').offset();
+  var left = $(window).scrollLeft() - offset.left,
+      top = $(window).scrollTop() - offset.top;
+  viewport = {
+    'top': Math.max(0, top),
+    'left': Math.max(0, left),
+    'bottom': Math.min(height, top + $(window).height()),
+    'right': Math.min(width, left + $(window).width()),
+  };
+  sankity.relayout(viewport);
+  vis.selectAll(".link")
+    .call(d3.sankity_link(sankity));
+  vis.selectAll(".node")
+    .call(d3.sankity_node(sankity));
+}
+    </script>
+
+    <style>
+body {
+  background: black;
+  color: gray;
+}
+
+h1 {
+  text-align: center;
+}
+
+#kibou {
+  margin: 0 auto;
+  width: 900px;
+}
+
+div.popup {
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid gray;
+  width: 400px;
+  height: 300px;
+  display: none;
+  position: absolute;
+  background: black;
+}
+
+div.popup a.close {
+  float: right;
+  margin: 1em;
+}
+
+path.brace {
+  fill: rgba(255, 255, 255, 0);
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 5px;
+}
+
+path.flow {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 5px;
+}
+
+path.glow {
+  stroke: rgba(255, 255, 0, 0.5);
+  stroke-width: 5px;
+}
+
+path.glow-selected {
+  stroke: rgba(255, 255, 0, 1);
+  stroke-width: 5px;
+}
+
+text {
+  fill: gray;
+  color: gray;
+}
+    </style>
+
+  </head>
+  <body>
+    <h1>Puella Magi Madoka Magica: the Differences</h1>
+    <div id="kibou"></div>
+    <div class="popup" id="line36">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line39">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line42">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line45">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line48">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line51">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line54">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line57">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line60">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line63">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line66">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line69">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line73">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The curtain rise</p>
+<ul>
+<li>Date is supposed to be changed to 2012.  <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line80">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>&nbsp;</p>
+<ul>
+<li>Redrawn: the picture on the wall behind when Junko leaves (7:07 ~ 7:12 from TVA-BD) <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line87">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>New Opening: Luminous by Claris</p>
+</div>
+<div class="popup" id="line92">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>&nbsp;</p>
+<ul>
+<li>Redone from storyboard: Most of the sequence of Madoka, Sayaka, &amp; Hitomi on the way to school (7:37 ~ 8:55 from TVA-BD) <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>Added: The scene Homura is writing her own name (10:17 ~ 10:19 from TVA-BD)</li>
+<li>Script change: Homura doesn't repond to the students surrounding her (10:45 ~ 10:58 from TVA-BD)</li>
+</ul>
+</div>
+<div class="popup" id="line101">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line104">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The restaurant sequence:</p>
+<ul>
+<li>Redrawn: Restaurant <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line111">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>&nbsp;</p>
+<ul>
+<li>The Madoka listens to Luminous instead of Connect (17:11 ~ 17:18 from TVA-BD) <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>Redrawn: Falling chain redone in 3D (18:16 ~ 18:18)</li>
+<li>Added: When the witch barrier appears, we are introduced to a series of doors, like in Episode 2. (19:15 ~ 19:20)</li>
+<li>Redrawn: Mami's transformation scene (21:44 ~ 21:55)</li>
+</ul>
+</div>
+<div class="popup" id="line121">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>&nbsp;</p>
+<ul>
+<li>Added: Instead of Madoka in the morning recalling the previous day, the overall landscape of the city is added. (2:50 ~ 2:56 from TVA-BD) <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line128">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line134">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>&nbsp;</p>
+<ul>
+<li>Redrawn: The background rooftop structure</li>
+</ul>
+</div>
+<div class="popup" id="line141">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The restaurant sequence:</p>
+<ul>
+<li>Redrawn: Restaurant <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>Note: The inconstency as the Madoka's drawing is first black-and-white, and then colored when the cut is changed.</li>
+</ul>
+</div>
+<div class="popup" id="line149">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The fight with Gertrud:</p>
+<ul>
+<li>Redrawn: The which's kiss (17:47 ~ 17:50 from TVA-BD) <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>New Soundtrack: Magia</li>
+</ul>
+</div>
+<div class="popup" id="line157">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line160">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line163">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>&nbsp;</p>
+<ul>
+<li>Redrawn: Mami's transformation scene <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>Script change: Mami doesn't say about her body is light("体が軽い。こんな幸せな気持ちで乗るなんて初めて。") <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>New soundtrack: Credens Justitiam with Japanese lyrics</li>
+</ul>
+</div>
+<div class="popup" id="line172">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The fight with Charlotte:</p>
+<ul>
+<li>New soundtrack: When Homura fights Charlotte</li>
+</ul>
+</div>
+<div class="popup" id="line179">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line182">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>&nbsp;</p>
+<ul>
+<li>Redrawn: Witch's kisses</li>
+<li>Added: One cut that suggest the factory is on the second floor (needs confirm)</li>
+</ul>
+</div>
+<div class="popup" id="line190">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The fight with H. N. Elly (Kristen)</p>
+<ul>
+<li>New soundtrack</li>
+</ul>
+</div>
+<div class="popup" id="line197">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>A cut from Sayaka making a contract from Kyubey</p>
+</div>
+<div class="popup" id="line201">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>A cut from Sayaka making a contract from Kyubey</p>
+</div>
+<div class="popup" id="line205">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>A cut from Sayaka making a contract from Kyubey</p>
+</div>
+<div class="popup" id="line209">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The hospital scene</p>
+<ul>
+<li>Redrawn: the chair Sayaka is sitting on</li>
+<li>Redrawn: Kyouko is eating a cream-filled cookie instead of a waffle <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line217">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line220">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The Sayaka's fight with Anja, then with Kyouko</p>
+<ul>
+<li>Redrawn: Sayaka's transformation scene, suggesting mermaid metaphor <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>Redrawn: Kyouko is eating a teddy-bear taiyaki instead of fish-shaped one <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>Note: The inconsistency of the sword's orientation in 18:55 ~ 19:19 from TVA-BD has been not fixed</li>
+</ul>
+</div>
+<div class="popup" id="line229">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line232">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>Dog Drug Reinforcement (DDR) scene</p>
+<ul>
+<li>Redrawn: Kyouko is eating strawberry-flavored pockies <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line239">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>Madoka's talk with Junko</p>
+<ul>
+<li>Redrawn: most of the scenes <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line246">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>&nbsp;</p>
+<ul>
+<li>Redrawn: Madoka's wearing casual clothes at night, instead of her school uniform <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>Redrawn: Kyouko's transformation scene <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>Redrawn: The cut of Homura vanishing <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>Redrawn: Sayaka lying on the bridge <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>Redrawn: Kyouko grabs kyubey's head instead of his ear <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line257">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>Sayaka yelling at Kyubey</p>
+<ul>
+<li>presented as flashback <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line264">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>Kyubey demonstrating pain to Sayaka</p>
+<ul>
+<li>Script change: Kyubey's lines about souls abridged <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+<li>The lighting has changed</li>
+</ul>
+</div>
+<div class="popup" id="line272">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line275">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>Madoka's talk with Homura</p>
+<ul>
+<li>Redrawn: They're just after the gate of tower, not near the fence <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line282">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line285">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line288">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line291">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>Sayaka's fight with Elsa Maria</p>
+<ul>
+<li>Redrawn: Kyouko's eating an orange popsicle, instead of blue one <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line298">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line301">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line304">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line307">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line310">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line313">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The Sayaka's despair</p>
+<ul>
+<li>Added: The cut where Sayaka sinks down in black water <a href="http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look">source</a></li>
+</ul>
+</div>
+<div class="popup" id="line320">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>Sayaka in Train</p>
+<ul>
+<li>Redrawn: Entire sequence redone in 3D</li>
+</ul>
+</div>
+<div class="popup" id="line327">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line330">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line333">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line336">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The introductory scene before the time slip</p>
+</div>
+<div class="popup" id="line340">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The fried egg scene:</p>
+<ul>
+<li>The fried egg (sunny side up) scene from Episode 1 has been reduplicated, redubbed with "soy sauce vs. salt" argument instead of hard-or-soft.</li>
+</ul>
+</div>
+<div class="popup" id="line347">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line350">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>Static-like screen with number figures</p>
+</div>
+<div class="popup" id="line354">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>&nbsp;</p>
+<ul>
+<li>Note on inconstency: When her holds Madoka's hands, Homura's ring and the symbol on her fingernail are not present</li>
+</ul>
+</div>
+<div class="popup" id="line361">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>Static-like screen with number figures</p>
+</div>
+<div class="popup" id="line365">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line368">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>Static-like screen with number figures</p>
+</div>
+<div class="popup" id="line372">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line375">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>The Madoka's "dream" sequence</p>
+</div>
+<div class="popup" id="line379">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line387">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>Connect by Claris</p>
+<ul>
+<li>First potion of the animation shows Homura instead of Madoka</li>
+<li>On the tower in the last cut, only Homura is sitting with Madoka</li>
+</ul>
+</div>
+<div class="popup" id="line395">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line398">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line401">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line404">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line407">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+<div class="popup" id="line410">
+<a href="#" class="close" onclick="unselect()">[X]</a>
+<p>No description.</p>
+</div>
+  </body>
+<!--
+vim: ts=2 sts=2 sw=2
+-->
+</html>

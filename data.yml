@@ -1,0 +1,419 @@
+nodes:
+# TV series
+ - - ["Ep.1", "24:10"]
+   - ["Ep.2", "24:10"]
+   - ["Ep.3", "24:10"]
+   - ["Ep.4", "24:10"]
+   - ["Ep.5", "24:10"]
+   - ["Ep.6", "24:10"]
+   - ["Ep.7", "24:10"]
+   - ["Ep.8", "24:10"]
+   - ["Ep.9", "24:10"]
+   - ["Ep.10", "24:10"]
+   - ["Ep.11", "24:10"]
+   - ["Ep.12", "24:10"]
+# Blu-ray
+ - - ["Ep.1", "25:40"]
+   - ["Ep.2", "25:40"]
+   - ["Ep.3", "24:10"]
+   - ["Ep.4", "24:10"]
+   - ["Ep.5", "24:10"]
+   - ["Ep.6", "24:10"]
+   - ["Ep.7", "24:10"]
+   - ["Ep.8", "24:10"]
+   - ["Ep.9", "25:40"]
+   - ["Ep.10", "24:10"]
+   - ["Ep.11", "24:10"]
+   - ["Ep.12", "24:00"]
+# Films
+ - - ["Beginnings", "130:00"]
+   - ["Eternal", "109:00"]
+# Blu-ray
+# - - ["Beginnings", "130:00"]
+#   - ["Eternal", "109:00"]
+links:
+# layer 1: TV => Blu-ray
+ - - source: ["Ep.1", "0:00"]
+     target: ["Ep.1", "0:00"]
+     duration: "24:10"
+   - source: ["Ep.2", "0:00"]
+     target: ["Ep.2", "0:00"]
+     duration: "24:10"
+   - source: ["Ep.3", "0:00"]
+     target: ["Ep.3", "0:00"]
+     duration: "24:10"
+   - source: ["Ep.4", "0:00"]
+     target: ["Ep.4", "0:00"]
+     duration: "24:10"
+   - source: ["Ep.5", "0:00"]
+     target: ["Ep.5", "0:00"]
+     duration: "24:10"
+   - source: ["Ep.6", "0:00"]
+     target: ["Ep.6", "0:00"]
+     duration: "24:10"
+   - source: ["Ep.7", "0:00"]
+     target: ["Ep.7", "0:00"]
+     duration: "24:10"
+   - source: ["Ep.8", "0:00"]
+     target: ["Ep.8", "0:00"]
+     duration: "24:10"
+   - source: ["Ep.9", "0:00"]
+     target: ["Ep.9", "0:00"]
+     duration: "24:10"
+   - source: ["Ep.10", "0:00"]
+     target: ["Ep.10", "0:00"]
+     duration: "24:10"
+   - source: ["Ep.11", "0:00"]
+     target: ["Ep.11", "0:00"]
+     duration: "24:10"
+   - source: ["Ep.12", "0:00"]
+     target: ["Ep.12", "0:00"]
+     duration: "24:10"
+# layer 2: TV Blu-ray => Films
+ - - source: ["Ep.1", "0:00"]
+     target: ["Beginnings", "0:00"]
+     duration: "10"
+     note: |
+        The curtain rise
+
+         - Date is supposed to be changed to 2012.  [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: ["Ep.1", "4:40"]
+     target: ["Beginnings", "0:10"]
+     duration: "2:53"
+     note: |
+        &nbsp;
+
+         - Redrawn: the picture on the wall behind when Junko leaves (7:07 ~ 7:12 from TVA-BD) [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: null
+     target: ["Beginnings", "3:03"]
+     duration: "1:30"
+     note: |
+        New Opening: Luminous by Claris
+   - source: ["Ep.1", "7:33"]
+     target: ["Beginnings", "4:33"]
+     duration: "6:15"
+     note: |
+        &nbsp;
+
+         - Redone from storyboard: Most of the sequence of Madoka, Sayaka, & Hitomi on the way to school (7:37 ~ 8:55 from TVA-BD) [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - Added: The scene Homura is writing her own name (10:17 ~ 10:19 from TVA-BD)
+         - Script change: Homura doesn't repond to the students surrounding her (10:45 ~ 10:58 from TVA-BD)
+   - source: ["Ep.1", "13:48"]
+     target: null
+     duration: "50"
+   - source: ["Ep.1", "14:38"]
+     target: ["Beginnings", "10:48"]
+     duration: "2:02"
+     note: |
+        The restaurant sequence:
+
+         - Redrawn: Restaurant [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: ["Ep.1", "17:06"]
+     target: ["Beginnings", "12:50"]
+     duration: "6:47"
+     note: |
+        &nbsp;
+
+         - The Madoka listens to Luminous instead of Connect (17:11 ~ 17:18 from TVA-BD) [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - Redrawn: Falling chain redone in 3D (18:16 ~ 18:18)
+         - Added: When the witch barrier appears, we are introduced to a series of doors, like in Episode 2. (19:15 ~ 19:20)
+         - Redrawn: Mami's transformation scene (21:44 ~ 21:55)
+   - source: ["Ep.2", "2:50"]
+     target: ["Beginnings", "19:37"]
+     duration: "1:31"
+     note: |
+        &nbsp;
+
+         - Added: Instead of Madoka in the morning recalling the previous day, the overall landscape of the city is added. (2:50 ~ 2:56 from TVA-BD) [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: ["Ep.2", "5:15"]
+     target: ["Beginnings", "21:08"]
+     duration: "1:42"
+#   - source: ["Ep.2", "9:23"]
+#     target: null
+#     duration: "1:03"
+   - source: ["Ep.2", "11:16"]
+     target: ["Beginnings", "22:48"]
+     duration: "2:38"
+     note: |
+        &nbsp;
+
+         - Redrawn: The background rooftop structure
+   - source: ["Ep.2", "14:31"]
+     target: ["Beginnings", "25:26"]
+     duration: "1:12"
+     note: |
+        The restaurant sequence:
+
+         - Redrawn: Restaurant [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - Note: The inconstency as the Madoka's drawing is first black-and-white, and then colored when the cut is changed.
+   - source: ["Ep.2", "16:24"]
+     target: ["Beginnings", "26:40"]
+     duration: "7:30"
+     note: |
+        The fight with Gertrud:
+
+         - Redrawn: The which's kiss (17:47 ~ 17:50 from TVA-BD) [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - New Soundtrack: Magia
+   - source: ["Ep.3", "0:00"]
+     target: ["Beginnings", "34:08"]
+     duration: "1:25"
+   - source: ["Ep.3", "6:18"]
+     target: ["Beginnings", "35:33"]
+     duration: "1:00"
+   - source: ["Ep.3", "8:46"]
+     target: ["Beginnings", "36:33"]
+     duration: "9:44"
+     note: |
+        &nbsp;
+
+         - Redrawn: Mami's transformation scene [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - Script change: Mami doesn't say about her body is light("体が軽い。こんな幸せな気持ちで乗るなんて初めて。") [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - New soundtrack: Credens Justitiam with Japanese lyrics
+   - source: ["Ep.3", "18:34"]
+     target: ["Beginnings", "46:17"]
+     duration: "3:50"
+     note: |
+        The fight with Charlotte:
+
+         - New soundtrack: When Homura fights Charlotte
+   - source: ["Ep.4", "4:42"]
+     target: ["Beginnings", "50:07"]
+     duration: "2:00"
+   - source: ["Ep.4", "6:56"]
+     target: ["Beginnings", "52:07"]
+     duration: "10:04"
+     note: |
+        &nbsp;
+
+         - Redrawn: Witch's kisses
+         - Added: One cut that suggest the factory is on the second floor (needs confirm)
+   - source: ["Ep.4", "17:14"]
+     target: ["Beginnings", "62:11"]
+     duration: "4:20"
+     note: |
+        The fight with H. N. Elly (Kristen)
+
+         - New soundtrack
+   - source: ["Ep.5", "0:35"]
+     target: ["Beginnings", "71:35"]
+     duration: "2"
+     note: A cut from Sayaka making a contract from Kyubey
+   - source: ["Ep.5", "0:41"]
+     target: ["Beginnings", "72:05"]
+     duration: "2"
+     note: A cut from Sayaka making a contract from Kyubey
+   - source: ["Ep.5", "1:00"]
+     target: ["Beginnings", "72:35"]
+     duration: "2"
+     note: A cut from Sayaka making a contract from Kyubey
+   - source: ["Ep.5", "3:30"]
+     target: ["Beginnings", "66:31"]
+     duration: "7:12"
+     note: |
+        The hospital scene
+
+         - Redrawn: the chair Sayaka is sitting on
+         - Redrawn: Kyouko is eating a cream-filled cookie instead of a waffle [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: ["Ep.5", "13:54"]
+     target: ["Beginnings", "73:43"]
+     duration: "1:19"
+   - source: ["Ep.5", "16:36"]
+     target: ["Beginnings", "75:02"]
+     duration: "5:49"
+     note: |
+        The Sayaka's fight with Anja, then with Kyouko
+
+         - Redrawn: Sayaka's transformation scene, suggesting mermaid metaphor [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - Redrawn: Kyouko is eating a teddy-bear taiyaki instead of fish-shaped one [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - Note: The inconsistency of the sword's orientation in 18:55 ~ 19:19 from TVA-BD has been not fixed
+   - source: ["Ep.6", "0:24"]
+     target: ["Beginnings", "80:51"]
+     duration: "1:53"
+   - source: ["Ep.6", "6:17"]
+     target: ["Beginnings", "82:44"]
+     duration: "1:34"
+     note: |
+        Dog Drug Reinforcement (DDR) scene
+
+         - Redrawn: Kyouko is eating strawberry-flavored pockies [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: ["Ep.6", "11:14"]
+     target: ["Beginnings", "84:18"]
+     duration: "3:30"
+     note: |
+        Madoka's talk with Junko
+
+         - Redrawn: most of the scenes [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: ["Ep.6", "14:55"]
+     target: ["Beginnings", "87:48"]
+     duration: "7:29"
+     note: |
+        &nbsp;
+
+         - Redrawn: Madoka's wearing casual clothes at night, instead of her school uniform [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - Redrawn: Kyouko's transformation scene [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - Redrawn: The cut of Homura vanishing [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - Redrawn: Sayaka lying on the bridge [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - Redrawn: Kyouko grabs kyubey's head instead of his ear [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: ["Ep.7", "0:16"]
+     target: ["Beginnings", "97:37"]
+     duration: "30"
+     note: |
+        Sayaka yelling at Kyubey
+
+         - presented as flashback [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: ["Ep.7", "1:16"]
+     target: ["Beginnings", "98:07"]
+     duration: "1:20"
+     note: |
+        Kyubey demonstrating pain to Sayaka
+
+         - Script change: Kyubey's lines about souls abridged [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+         - The lighting has changed
+   - source: ["Ep.7", "4:06"]
+     target: ["Beginnings", "95:17"]
+     duration: "15"
+   - source: ["Ep.7", "4:21"]
+     target: ["Beginnings", "97:23"]
+     duration: "14"
+     note: |
+        Madoka's talk with Homura
+
+         - Redrawn: They're just after the gate of tower, not near the fence [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: ["Ep.7", "4:35"]
+     target: ["Beginnings", "95:32"]
+     duration: "1:51"
+   - source: ["Ep.7", "6:26"]
+     target: ["Beginnings", "99:27"]
+     duration: "0:27"
+   - source: ["Ep.7", "7:41"]
+     target: ["Beginnings", "99:54"]
+     duration: "6:59"
+   - source: ["Ep.7", "14:40"]
+     target: ["Beginnings", "106:53"]
+     duration: "7:40"
+     note: |
+        Sayaka's fight with Elsa Maria
+
+         - Redrawn: Kyouko's eating an orange popsicle, instead of blue one [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: ["Ep.8", "0:00"]
+     target: ["Beginnings", "114:33"]
+     duration: "1:17"
+   - source: ["Ep.8", "2:55"]
+     target: ["Beginnings", "115:50"]
+     duration: "1:41"  # 4:36
+   - source: ["Ep.8", "4:53"]
+     target: ["Beginnings", "117:31"]
+     duration: "52"  # 5:45
+   - source: ["Ep.8", "5:45"]
+     target: ["Beginnings", "118:23"]
+     duration: "2:12"
+   - source: ["Ep.8", "8:13"]
+     target: ["Beginnings", "120:35"]
+     duration: "0:34"
+   - source: ["Ep.8", "9:16"]
+     target: ["Beginnings", "121:09"]
+     duration: "0:39"
+     note: |
+        The Sayaka's despair
+
+         - Added: The cut where Sayaka sinks down in black water [source](http://yuis-musings.tumblr.com/post/33573441213/madoka-magica-movie-beginnings-in-depth-look)
+   - source: ["Ep.8", "13:25"]
+     target: ["Beginnings", "121:48"]
+     duration: "8:59"
+     note: |
+        Sayaka in Train
+
+         - Redrawn: Entire sequence redone in 3D
+   - source: ["Ep.8", "20:14"]
+     target: ["Eternal", "0:00"]
+     duration: "1:52"
+   - source: ["Ep.9", "0:21"]
+     target: ["Eternal", "1:52"]
+     duration: "1:36"
+   - source: ["Ep.9", "3:27"]
+     target: ["Eternal", "4:58"]
+     duration: "20:28"
+   - source: null
+     target: ["Eternal", "20:28"]
+     duration: "1"
+     note: The introductory scene before the time slip
+   - source: ["Ep.1", "9:02"]
+     target: ["Eternal", "27:00"]
+     duration: "42"
+     note: |
+        The fried egg scene:
+
+         - The fried egg (sunny side up) scene from Episode 1 has been reduplicated, redubbed with "soy sauce vs. salt" argument instead of hard-or-soft.
+   - source: ["Ep.10", "0:00"]
+     target: ["Eternal", "27:42"]
+     duration: "5:12"
+   - source: null
+     target: ["Eternal", "32:54"]
+     duration: "3"
+     note: Static-like screen with number figures
+   - source: ["Ep.10", "5:14"]
+     target: ["Eternal", "32:57"]
+     duration: "6:04"
+     note: |
+        &nbsp;
+
+         - Note on inconstency: When her holds Madoka's hands, Homura's ring and the symbol on her fingernail are not present
+   - source: null
+     target: ["Eternal", "39:01"]
+     duration: "3"
+     note: Static-like screen with number figures
+   - source: ["Ep.10", "11:18"]
+     target: ["Eternal", "39:04"]
+     duration: "3:48"
+   - source: null
+     target: ["Eternal", "42:52"]
+     duration: "3"
+     note: Static-like screen with number figures
+   - source: ["Ep.10", "15:06"]
+     target: ["Eternal", "42:55"]
+     duration: "3:43"
+   - source: ["Ep.1", "0:10"]
+     target: ["Eternal", "46:38"]
+     duration: "48"
+     note: The Madoka's "dream" sequence
+   - source: ["Ep.10", "18:52"]
+     target: ["Eternal", "47:19"]
+     duration: "3:33"
+#   - source: ["Ep.1", "16:41"]
+#     target: ["Eternal", "48:00"]
+#     duration: "25"
+#     note: |
+#        The sequence Homura chasing Kyubey
+   - source: ["Ep.10", "22:26"]
+     target: ["Eternal", "50:52"]
+     duration: "1:30"
+     note: |
+        Connect by Claris
+
+         - First potion of the animation shows Homura instead of Madoka
+         - On the tower in the last cut, only Homura is sitting with Madoka
+   - source: ["Ep.11", "0:00"]
+     target: ["Eternal", "52:22"]
+     duration: "2:02"
+   - source: ["Ep.11", "3:32"]
+     target: ["Eternal", "54:24"]
+     duration: "20:00"
+   - source: ["Ep.11", "23:35"]
+     target: ["Eternal", "74:34"]
+     duration: "0:19"
+   - source: ["Ep.12", "0:00"]
+     target: ["Eternal", "74:53"]
+     duration: "2:34"
+   - source: ["Ep.12", "2:46"]
+     target: ["Eternal", "77:27"]
+     duration: "18:43"
+   - source: ["Ep.12", "23:00"]
+     target: ["Eternal", "98:00"]
+     duration: "1:00"
+# layer 3: Films => Blu-ray
+# - - source: ["Beginnings", "0:00"]
+#     target: ["Beginnings", "0:00"]
+#     duration: "130:00"
+#   - source: ["Eternal", "0:00"]
+#     target: ["Eternal", "0:00"]
+#     duration: "109:00"

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="d3/d3.v2.min.js"></script>
+    <script type="text/javascript" src="sankity.js"></script>
+    <script type='text/javascript'>
+var width = 800, height = 9000;
+var sankity;
+var vis;
+
+$(document).ready(function() {
+  var sankityData = {{ data }};
+  vis = d3.select("#kibou")
+    .append("svg")
+    .attr("width", width + 100)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", "translate(50, 0)");
+  vis.append("svg:defs")
+    .append("svg:filter")
+    .attr("id", "blur")
+    .append("svg:feGaussianBlur")
+    .attr("stdDeviation", 1);
+  sankity = d3.sankity()
+    .nodeWidth(15)
+    .nodePadding(10)
+    .size([width, height])
+  sankity.nodes(sankityData.nodes)
+    .links(sankityData.links)
+    .layout(32);
+  vis.append("g")
+    .selectAll(".link")
+    .data(sankityData.links)
+    .enter()
+    .append("g")
+    .attr("class", "link")
+    .call(d3.sankity_link(sankity));
+  vis.selectAll(".node")
+    .data(sankityData.nodes)
+    .enter()
+    .append("g")
+    .attr("class", "node")
+    .attr("transform", function(d) {
+      return "translate(" + d.x + "," + d.y + ")";
+    })
+    .call(d3.sankity_node(sankity));
+
+  vis.selectAll("g.link")
+      .on("mouseover", highlight(1))
+      .on("mouseout", highlight(0))
+      .on("click", select);
+  vis.selectAll("g.link")
+      .append("path")
+      .attr("d", d3.sankity_link().path)
+      .style("stroke-width", 10)
+      .attr("opacity", 0);
+});
+
+
+function highlight(b) {
+  return function(g, i) {
+    d3.select('#kibou')
+      .selectAll("g.link path")
+      .filter(function (d) {
+        return d3.select(this).classed("glow-selected") === false;
+      })
+      .classed("glow", false)
+      .attr("filter", "");
+    if (b) {
+      d3.select('#kibou')
+        .selectAll("g.link path")
+        .filter(function (d) {
+          return d == g;
+        })
+        .classed("glow", true)
+        .attr("filter", "url(#blur)");
+    }
+  };
+}
+
+
+function select(g, i) {
+  unselect();
+  var coord = d3.mouse(this);
+  var div = $('#' + g.ref);
+  var x = (d3.event.pageX - coord[0]) + 
+    ((coord[0] < width / 2) ? width * 0.75 : width * 0.25) - 
+    div.width() / 2;
+  var y = d3.event.pageY;
+  $('#' + g.ref)
+    .css('left', x)
+    .css('top', y)
+    .show();
+  d3.select('#kibou')
+    .selectAll("g.link path")
+    .filter(function (d) {
+      return d == g;
+    })
+    .classed("glow", true)
+    .classed("glow-selected", true)
+    .attr("filter", "url(#blur)");
+}
+
+
+function unselect() {
+  $('div.popup').hide();
+  d3.select('#kibou')
+    .selectAll("g.link path")
+    .classed("glow", false)
+    .classed("glow-selected", false)
+    .attr("filter", "");
+}
+
+
+function relayout() {
+  var offset = $('#kibou').offset();
+  var left = $(window).scrollLeft() - offset.left,
+      top = $(window).scrollTop() - offset.top;
+  viewport = {
+    'top': Math.max(0, top),
+    'left': Math.max(0, left),
+    'bottom': Math.min(height, top + $(window).height()),
+    'right': Math.min(width, left + $(window).width()),
+  };
+  sankity.relayout(viewport);
+  vis.selectAll(".link")
+    .call(d3.sankity_link(sankity));
+  vis.selectAll(".node")
+    .call(d3.sankity_node(sankity));
+}
+    </script>
+
+    <style>
+body {
+  background: black;
+  color: gray;
+}
+
+h1 {
+  text-align: center;
+}
+
+#kibou {
+  margin: 0 auto;
+  width: 900px;
+}
+
+div.popup {
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid gray;
+  width: 400px;
+  height: 300px;
+  display: none;
+  position: absolute;
+  background: black;
+}
+
+div.popup a.close {
+  float: right;
+  margin: 1em;
+}
+
+path.brace {
+  fill: rgba(255, 255, 255, 0);
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 5px;
+}
+
+path.flow {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 5px;
+}
+
+path.glow {
+  stroke: rgba(255, 255, 0, 0.5);
+  stroke-width: 5px;
+}
+
+path.glow-selected {
+  stroke: rgba(255, 255, 0, 1);
+  stroke-width: 5px;
+}
+
+text {
+  fill: gray;
+  color: gray;
+}
+    </style>
+
+  </head>
+  <body>
+    <h1>Puella Magi Madoka Magica: the Differences</h1>
+    <div id="kibou"></div>
+    {{ divs }}
+  </body>
+<!--
+vim: ts=2 sts=2 sw=2
+-->
+</html>
